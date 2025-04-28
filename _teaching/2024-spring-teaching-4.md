@@ -2,7 +2,7 @@
 title: "COMPSCI 561: System Defense and Test"
 collection: teaching
 type: "Graduate course, Teaching assistant"
-permalink: /teaching/2024-Spring-teaching-4
+permalink: /teaching/2024-spring-teaching-4
 venue: "The Manning College of Information and Computer Sciences at the University of Massachusetts Amherst"
 date: 2024-02-01
 location: "Amherst, Massachusetts"
