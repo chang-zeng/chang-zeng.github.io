@@ -29,11 +29,34 @@ Awards
 
 Research Experience
 ======
-* *Human-AI Cooperation for Personalized Fairness Optimization - University of Massachusetts Amherst - 2022-Present*
+* *Agentic Retrieval - University of Massachusetts Amherst - 2025-Present*
+  * Supervisor: Razieh Negin Rahimi
+  * Contribution: 
+    * Designed a multi-level retrieval stack that fuses lexical and dense signals across stages and subqueries to strengthen overall ranking quality.
+    * Developed an agentic loop that prioritizes parallel reasoning chains and coordinated search branches to expand and align search intents.
+    * Built a SearchR1-style training and inference pipeline that carries information from previous hops and prior plan iterations, enabling richer context for better planning and retrieval.
+  
+* *Structured Knowledge Retrieval - University of Massachusetts Amherst - 2025-2025*
+  * Supervisor: Razieh Negin Rahimi
+  * Contribution: 
+    * Crafted a field-aware retrieval stack that encodes field names directly into field values, preserving schema semantics during matching and reducing field ambiguity.
+    * Devised bidirectional field representations that learn general column embeddings from column values and reuse them to augment each column’s value representation.
+    * Implemented field-aware scoring modes that blend field and its value signals, stabilizing multi-field ranking and improving signal balance across fields.
+  
+* *Personalized Product Search - University of Massachusetts Amherst - 2024-2025*
+  * Supervisor: Razieh Negin Rahimi
+  * Contribution: 
+    * Engineered an iterative self-training pipeline that leverages synthetic datasets from multiple LLMs with adaptive label smoothing to boost label quality.
+    * Extracted and refined rich user embeddings and latent preferences from historical interactions using LLM-based encoding, enhanced via adaptive hard-negative sampling during fine-tuning.
+    * Developed a multi-stage fine-tuning framework to integrate user profiles into personalized search to jointly optimize query and item representations through latent embedding or in-context prompt.
+
+* *AI Alignment Via Power-Mean Elicitation - University of Massachusetts Amherst - 2022-2024*
   * Supervisor: Cyrus Cousins and Yair Zick
   * Contribution: 
-    * Analyzing and Utilizing Power Mean Fairness Concepts to elicit $\varepsilon$-approximate Human Cardinal Fairness Concept.
-
+    * Modeled human and LLM decision-making processes by analyzing the behavior of the Weighted Generalized Means class in real-world scenarios involving multiple stakeholders.
+    * Created flexible, robust distance metrics to quantify welfare disparities by comparing utility and disutility outcomes among diverse stakeholder groups.
+    * Conducted minimax complexity analysis to evaluate the algorithm's efficiency for proper and improper epsilon-elicitation of fairness concepts.
+  
 
 Work Experience
 ======
