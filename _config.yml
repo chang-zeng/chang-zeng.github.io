@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Chang Zeng"
 title_separator          : "-"
 name                     : &name "Chang Zeng"
-description              : &description "MS Students at UMass Amherst"
+description              : &description "Ph.D. Students at UMass Amherst"
 url                      : https://siegandy.github.io
 baseurl                  : ""
 repository               : "SiegAndy/siegandy.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Chang Zeng"
   avatar           : "changzeng.png"
-  bio              : "MS Student at UMass Amherst"
+  bio              : "Ph.D. Student at UMass Amherst"
   location         : "Amherst, MA"
   employer         :
   pubmed           :
