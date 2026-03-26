@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Human Elicitation Interface</title>
-  <script type="module" crossorigin src="./assets/sessionService-DpBdJ9Uv.js"></script>
-  <script type="module" crossorigin src="./assets/interface-DvvgUgMW.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/sessionService-DP3Zx-bF.css">
+  <script type="module" crossorigin src="./assets/sessionService-CMAn0EqA.js"></script>
+  <script type="module" crossorigin src="./assets/interface-BUctn8po.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/sessionService-D4vMYeCI.css">
 </head>
 <body data-mode="normal">
   <div class="shell">
@@ -17,7 +17,8 @@
       <div class="hero-copy">
         The page presents a scenario, records the option you choose, and uses that answer to
         generate the next comparison. Sessions are resumable, and the estimate bar tracks answered
-        queries against the current worst-case search length.
+        queries against the current worst-case search length. The most recent session ID is saved
+        in this browser so you can refresh and continue later.
       </div>
     </section>
     <section class="control-bar">
@@ -46,24 +47,6 @@
           <button class="ghost" id="clearButton">Clear Saved Session</button>
           <a class="nav-link" href="./summary.html">Summary</a>
         </div>
-      </div>
-    </section>
-    <section class="status-bar">
-      <div class="status-card">
-        <div class="status-label">Connection</div>
-        <div class="status-value" id="connectionStatus">Browser local</div>
-      </div>
-      <div class="status-card">
-        <div class="status-label">Session</div>
-        <div class="status-value" id="sessionStatus">No active session</div>
-      </div>
-      <div class="status-card">
-        <div class="status-label">Question Count</div>
-        <div class="status-value" id="queryCountStatus">0</div>
-      </div>
-      <div class="status-card">
-        <div class="status-label">Search Phase</div>
-        <div class="status-value" id="phaseStatus">Not started</div>
       </div>
     </section>
     <section class="workspace">
@@ -97,9 +80,9 @@
         </div>
         <pre id="promptText">Choose a scenario and start a session to receive the first comparison.</pre>
       </div>
-      <div class="note-card">
+      <div class="note-card hidden" id="noteCard">
         <div class="panel-title">Session Notes</div>
-        <p class="message" id="messageText">The most recent session ID is saved in this browser so you can refresh and continue later.</p>
+        <p class="message" id="messageText">Session notes appear when a session finishes.</p>
       </div>
       <div>
         <div class="panel-title">Options</div>
