@@ -11,9 +11,9 @@ title                    : "Chang Zeng"
 title_separator          : "-"
 name                     : &name "Chang Zeng"
 description              : &description "Ph.D. Students at UMass Amherst"
-url                      : https://siegandy.github.io
+url                      : https://chang-zeng.github.io
 baseurl                  : ""
-repository               : "SiegAndy/siegandy.github.io"
+repository               : "chang-zeng/chang-zeng.github.io"
 teaser                   : "changzeng.png" # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "SiegAndy"
+  github           : "chang-zeng"
   google_plus      :
   keybase          :
   instagram        :
