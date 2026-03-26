@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Elicitation Summary</title>
+  <script type="module" crossorigin src="./assets/summary-x7H_d03n.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/sessionService-CNTaYAsY.js">
+  <link rel="stylesheet" crossorigin href="./assets/sessionService-Qp8kmZWQ.css">
+</head>
+<body>
+  <div class="shell summary-shell">
+    <section class="hero summary-hero">
+      <div class="eyebrow">Human Elicitation Summary</div>
+      <h1>Completed run distribution</h1>
+      <div class="hero-copy">
+        This page summarizes completed elicitation runs on the normalized axis
+        <code>u = 1 - 1/p</code>, which maps the power-mean region <code>[1, inf)</code>
+        onto <code>[0, 1]</code>.
+      </div>
+      <div class="nav">
+        <a href="./index.html">Normal Interface</a>
+        <a href="./dev.html">Dev Interface</a>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="section-title">Scenario Filter</div>
+      <div class="tabs" id="tabRoot"></div>
+      <div class="stats" id="summaryStats"></div>
+    </section>
+    <section class="panel">
+      <div class="section-title">Best Estimate Histogram</div>
+      <div id="histogramContainer"></div>
+      <p class="axis-note">
+        Left edge corresponds to <code>p = 1</code>. Right edge corresponds to larger and larger
+        <code>p</code>, approaching infinity.
+      </p>
+    </section>
+    <section class="panel">
+      <div class="section-title">Final Interval Overview</div>
+      <div id="intervalContainer"></div>
+      <p class="axis-note">
+        Each line is a completed run, spanning its final normalized interval from
+        <code>plower</code> to <code>pupper</code>.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

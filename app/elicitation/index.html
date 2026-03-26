@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Elicitation Interface</title>
+  <script type="module" crossorigin src="./assets/sessionService-CNTaYAsY.js"></script>
+  <script type="module" crossorigin src="./assets/interface-CSC5Lmvb.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/sessionService-Qp8kmZWQ.css">
+</head>
+<body data-mode="normal">
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow">Live Human Elicitation</div>
+      <h2>Scenario-by-scenario preference search</h2>
+      <div class="hero-copy">
+        The page presents a scenario, records the option you choose, and uses that answer to
+        generate the next comparison. Sessions are resumable, and the estimate bar tracks answered
+        queries against the current worst-case search length.
+      </div>
+    </section>
+    <section class="control-bar">
+      <div class="control-row top">
+        <div class="control-group">
+          <label class="control-label" for="scenarioSelect">Scenario</label>
+          <select id="scenarioSelect">
+            <option value="">Loading scenarios...</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="sessionPicker">Saved Sessions</label>
+          <select id="sessionPicker">
+            <option value="">Select a saved session</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="sessionInput">Session ID</label>
+          <input id="sessionInput" type="text" placeholder="Enter a session id">
+        </div>
+      </div>
+      <div class="control-row bottom">
+        <div class="control-actions">
+          <button class="primary" id="startButton">Start New Session</button>
+          <button class="secondary" id="resumeButton">Resume Session</button>
+          <button class="ghost" id="clearButton">Clear Saved Session</button>
+          <a class="nav-link" href="./summary.html">Summary</a>
+          <a class="nav-link" href="./dev.html">Dev</a>
+        </div>
+      </div>
+    </section>
+    <section class="status-bar">
+      <div class="status-card">
+        <div class="status-label">Connection</div>
+        <div class="status-value" id="connectionStatus">Browser local</div>
+      </div>
+      <div class="status-card">
+        <div class="status-label">Session</div>
+        <div class="status-value" id="sessionStatus">No active session</div>
+      </div>
+      <div class="status-card">
+        <div class="status-label">Question Count</div>
+        <div class="status-value" id="queryCountStatus">0</div>
+      </div>
+      <div class="status-card">
+        <div class="status-label">Search Phase</div>
+        <div class="status-value" id="phaseStatus">Not started</div>
+      </div>
+    </section>
+    <section class="workspace">
+      <div class="prompt-card">
+        <div class="scenario-header">
+          <div class="scenario-header-top">
+            <div class="section-kicker">Current Scenario</div>
+            <div class="history-actions hidden" id="historyActions">
+              <button class="secondary" id="replayButton" type="button">Replay</button>
+              <a class="history-link nav-link" id="historyLink" href="#" target="_blank" rel="noopener noreferrer">Show Raw History</a>
+            </div>
+          </div>
+          <div class="estimate-bar-group" id="estimateBarGroup">
+            <div class="estimate-copy">
+              <span class="estimate-summary hidden" id="estimateSummary">Estimated progress will appear here once a session starts.</span>
+              <strong class="estimate-counter hidden" id="estimateCounter">0 / 0</strong>
+            </div>
+            <div class="estimate-track">
+              <div class="estimate-fill" id="estimateFill"></div>
+            </div>
+          </div>
+          <div class="replay-panel" id="replayPanel">
+            <div class="replay-slider-row">
+              <div class="replay-meta">
+                <span id="replayStepLabel">Replay step</span>
+                <span id="replaySelectionLabel">Selected option</span>
+              </div>
+              <input id="replaySlider" type="range" min="1" max="1" step="1" value="1">
+            </div>
+          </div>
+        </div>
+        <pre id="promptText">Choose a scenario and start a session to receive the first comparison.</pre>
+      </div>
+      <div class="note-card">
+        <div class="panel-title">Session Notes</div>
+        <p class="message" id="messageText">The most recent session ID is saved in this browser so you can refresh and continue later.</p>
+      </div>
+      <div>
+        <div class="panel-title">Options</div>
+        <div class="options-grid" id="optionsGrid"></div>
+      </div>
+      <div class="result-card" id="resultCard">
+        <div class="panel-title">Completed Session</div>
+        <div class="result-grid">
+          <div class="result-stat">Lower bound<strong id="resultLower">N/A</strong></div>
+          <div class="result-stat">Best estimate<strong id="resultMiddle">N/A</strong></div>
+          <div class="result-stat">Upper bound<strong id="resultUpper">N/A</strong></div>
+          <div class="result-stat">Questions answered<strong id="resultQueries">N/A</strong></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
