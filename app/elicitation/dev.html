@@ -1,188 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Human Elicitation Interface - Dev</title>
-  <script type="module" crossorigin src="./assets/sessionService-Vv1Qwu7z.js"></script>
-  <script type="module" crossorigin src="./assets/interface-B5dT1Ry-.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/sessionService-D4vMYeCI.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Elicitation Interface - Dev</title>
+  <script type="module" crossorigin src="./assets/sessionService-Dd70vbx6.js"></script>
+  <script type="module" crossorigin src="./assets/interface-Cz_u3VoN.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/sessionService-BmqWicvj.css">
 </head>
+
 <body data-mode="dev">
-  <div class="shell">
-    <section class="hero">
-      <div class="eyebrow">Live Human Elicitation - Dev</div>
-      <h2>Scenario-by-scenario preference search</h2>
-      <div class="hero-copy">
-        The page presents a scenario, records the option you choose, and uses that answer to
-        generate the next comparison. Sessions are resumable, and the estimate bar tracks answered
-        queries against the current worst-case search length. The most recent session ID is saved
-        in this browser so you can refresh and continue later.
-      </div>
-    </section>
-    <section class="control-bar">
-      <div class="control-row top">
-        <div class="control-group">
-          <label class="control-label" for="scenarioSelect">Scenario</label>
-          <select id="scenarioSelect">
-            <option value="">Loading scenarios...</option>
-          </select>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="sessionPicker">Saved Sessions</label>
-          <select id="sessionPicker">
-            <option value="">Select a saved session</option>
-          </select>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="sessionInput">Session ID</label>
-          <input id="sessionInput" type="text" placeholder="Enter a session id">
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="configToggle">Config</label>
-          <label class="toggle-chip"><input id="configToggle" type="checkbox"><span>Open config</span></label>
-        </div>
-      </div>
-      <div class="control-row bottom">
-        <div class="control-actions">
-          <button class="primary" id="startButton">Start New Session</button>
-          <button class="secondary" id="resumeButton">Resume Session</button>
-          <button class="ghost" id="clearButton">Clear Saved Session</button>
-          <button class="danger dev-only" id="deleteButton" type="button">Delete Session</button>
-          <a class="nav-link" href="./summary.html">Summary</a>
-          <a class="nav-link" href="./index.html">Normal</a>
-        </div>
-      </div>
-    </section>
-    <section class="config-panel" id="configPanel">
-      <div class="config-settings-row compact">
-        <div class="control-group">
-          <label class="control-label" for="errorToleranceInput">Shared Error Tolerance</label>
-          <input id="errorToleranceInput" type="number" step="any" min="0" value="0.0001">
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="searchModeInput">Default Search Mode</label>
-          <select id="searchModeInput">
-            <option value="unbounded_then_bounded">Unbounded + bounded</option>
-            <option value="bounded_only">Bounded only</option>
-          </select>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="unboundedNumOptionsInput">Unbounded Options Count</label>
-          <input id="unboundedNumOptionsInput" type="number" step="1" min="2" value="2">
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="boundedNumOptionsInput">Bounded Options Count</label>
-          <input id="boundedNumOptionsInput" type="number" step="1" min="2" value="2">
-        </div>
-      </div>
-      <div class="config-settings-row compact three-wide">
-        <div class="control-group config-column-1">
-          <label class="control-label">Display Estimate Count</label>
-          <label class="checkbox-field">
-            <input id="showEstimateTextInput" type="checkbox">
-            <span>Display Estimate Count</span>
-          </label>
-        </div>
-        <div class="control-group config-column-2">
-          <label class="control-label">Random Swap</label>
-          <label class="checkbox-field">
-            <input id="randomSwapInput" type="checkbox">
-            <span>Randomize option order</span>
-          </label>
-        </div>
-        <div class="control-group config-column-3">
-          <label class="control-label">Random Group Truncation</label>
-          <label class="checkbox-field">
-            <input id="randomGroupTruncationInput" type="checkbox">
-            <span>Randomize displayed truncated groups</span>
-          </label>
-        </div>
-      </div>
-      <div class="config-actions-row">
-        <button class="primary" id="saveConfigButton" type="button">Save</button>
-        <button class="secondary" id="revertConfigButton" type="button">Revert</button>
-      </div>
-    </section>
-    <section class="status-bar">
-      <div class="status-card">
-        <div class="status-label">Connection</div>
-        <div class="status-value" id="connectionStatus">Browser local</div>
-      </div>
-      <div class="status-card">
-        <div class="status-label">Session</div>
-        <div class="status-value" id="sessionStatus">No active session</div>
-      </div>
-      <div class="status-card">
-        <div class="status-label">Question Count</div>
-        <div class="status-value" id="queryCountStatus">0</div>
-      </div>
-      <div class="status-card">
-        <div class="status-label">Search Phase</div>
-        <div class="status-value" id="phaseStatus">Not started</div>
-      </div>
-    </section>
-    <section class="workspace">
-      <div class="prompt-card">
-        <div class="scenario-header">
-          <div class="scenario-header-top">
-            <div class="section-kicker">Current Scenario</div>
-            <div class="history-actions hidden" id="historyActions">
-              <button class="secondary" id="replayButton" type="button">Replay</button>
-              <a class="history-link nav-link" id="historyLink" href="#" target="_blank" rel="noopener noreferrer">Show Raw History</a>
+    <div class="shell">
+        <section class="hero">
+            <div class="eyebrow">Live Human Elicitation - Dev</div>
+            <h2>Scenario-by-scenario preference search</h2>
+            <div class="hero-copy">
+                The page presents a scenario, records the option you choose, and uses that answer to
+                generate the next comparison. Sessions are resumable, and the estimate bar tracks answered
+                queries against the current worst-case search length. The most recent session ID is saved
+                in this browser so you can refresh and continue later.
             </div>
-          </div>
-          <div class="estimate-bar-group" id="estimateBarGroup">
-            <div class="estimate-copy">
-              <span class="estimate-summary hidden" id="estimateSummary">Estimated progress will appear here once a session starts.</span>
-              <strong class="estimate-counter hidden" id="estimateCounter">0 / 0</strong>
+        </section>
+        <section class="control-bar">
+            <div class="control-row top">
+                <div class="control-group">
+                    <label class="control-label" for="scenarioSelect">Scenario</label>
+                    <select id="scenarioSelect">
+                        <option value="">Loading scenarios...</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="sessionPicker">Saved Sessions</label>
+                    <select id="sessionPicker">
+                        <option value="">Select a saved session</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="sessionInput">Session ID</label>
+                    <input id="sessionInput" type="text" placeholder="Enter a session id">
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="configToggle">Config</label>
+                    <label class="toggle-chip"><input id="configToggle" type="checkbox"><span>Open config</span></label>
+                </div>
             </div>
-            <div class="estimate-track">
-              <div class="estimate-fill" id="estimateFill"></div>
+            <div class="control-row bottom">
+                <div class="control-actions">
+                    <button class="primary" id="startButton">Start New Session</button>
+                    <button class="secondary" id="resumeButton">Resume Session</button>
+                    <button class="ghost" id="clearButton">Clear Saved Session</button>
+                    <button class="danger dev-only" id="deleteButton" type="button">Delete Session</button>
+                    <a class="nav-link" href="./summary.html">Summary</a>
+                    <a class="nav-link" href="./index.html">Normal</a>
+                </div>
             </div>
-          </div>
-          <div class="replay-panel" id="replayPanel">
-            <div class="replay-slider-row">
-              <div class="replay-meta">
-                <span id="replayStepLabel">Replay step</span>
-                <span id="replaySelectionLabel">Selected option</span>
-              </div>
-              <input id="replaySlider" type="range" min="1" max="1" step="1" value="1">
+        </section>
+        <section class="config-panel" id="configPanel">
+            <div class="config-settings-row compact">
+                <div class="control-group">
+                    <label class="control-label" for="errorToleranceInput">Shared Error Tolerance</label>
+                    <input id="errorToleranceInput" type="number" step="any" min="0" value="0.0001">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Display Estimate Count</label>
+                    <label class="checkbox-field">
+                        <input id="showEstimateTextInput" type="checkbox">
+                        <span>Display Estimate Count</span>
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Random Swap</label>
+                    <label class="checkbox-field">
+                        <input id="randomSwapInput" type="checkbox">
+                        <span>Randomize option order</span>
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="chainedTemplateInput">Template Selection Logic</label>
+                    <select id="chainedTemplateInput">
+                        <option value="random_auto">Random feasible per step</option>
+                        <option value="auto">First feasible in fixed order</option>
+                        <option value="only_case1">Only case1</option>
+                        <option value="only_case3">Only case3</option>
+                        <option value="alternating_case1_case3">Alternating case1/case3</option>
+                        <option value="alternating_case3_three_group">Alternating case3/three-group</option>
+                        <option value="only_three_group">Only three-group</option>
+                    </select>
+                </div>
             </div>
-          </div>
-        </div>
-        <pre id="promptText">Choose a scenario and start a session to receive the first comparison.</pre>
-      </div>
-      <div class="note-card hidden" id="noteCard">
-        <div class="panel-title">Session Notes</div>
-        <p class="message" id="messageText">Session notes appear when a session finishes.</p>
-      </div>
-      <div>
-        <div class="panel-title">Options</div>
-        <div class="options-grid" id="optionsGrid"></div>
-      </div>
-      <div class="search-card visible" id="searchCard">
-        <div class="panel-title">Search State</div>
-        <div class="search-plot-wrap">
-          <div class="search-plot" id="searchPlot"></div>
-          <div class="search-meta-row">
-            <div class="search-meta-chip"><span>Lower bound</span><strong id="lowerBoundValue">N/A</strong></div>
-            <div class="search-meta-chip"><span id="cutLabel">Cut target</span><strong id="cutValue">N/A</strong></div>
-            <div class="search-meta-chip"><span>Upper bound</span><strong id="upperBoundValue">N/A</strong></div>
-          </div>
-        </div>
-      </div>
-      <div class="result-card" id="resultCard">
-        <div class="panel-title">Completed Session</div>
-        <div class="result-grid">
-          <div class="result-stat">Lower bound<strong id="resultLower">N/A</strong></div>
-          <div class="result-stat">Best estimate<strong id="resultMiddle">N/A</strong></div>
-          <div class="result-stat">Upper bound<strong id="resultUpper">N/A</strong></div>
-          <div class="result-stat">Questions answered<strong id="resultQueries">N/A</strong></div>
-        </div>
-      </div>
-    </section>
-  </div>
+            <div class="config-settings-row">
+                <div class="control-group" id="randomGroupTruncationConfig" hidden>
+                    <label class="control-label">Random Group Truncation</label>
+                    <label class="checkbox-field">
+                        <input id="randomGroupTruncationInput" type="checkbox">
+                        <span>Randomize displayed truncated groups</span>
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="searchModeInput">Default Search Mode</label>
+                    <select id="searchModeInput">
+                        <option value="unbounded_then_bounded">Unbounded + bounded</option>
+                        <option value="bounded_only">Bounded only</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="boundedNumGroupsInput">Bounded Groups Count</label>
+                    <input id="boundedNumGroupsInput" type="number" step="1" min="2" value="2">
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="boundedNumOptionsInput">Bounded Options Count</label>
+                    <input id="boundedNumOptionsInput" type="number" step="1" min="2" value="2">
+                </div>
+                <div class="control-group" id="unboundedNumGroupsConfig">
+                    <label class="control-label" for="unboundedNumGroupsInput">Unbounded Groups Count</label>
+                    <input id="unboundedNumGroupsInput" type="number" step="1" min="2" value="2">
+                </div>
+                <div class="control-group" id="unboundedNumOptionsConfig">
+                    <label class="control-label" for="unboundedNumOptionsInput">Unbounded Options Count</label>
+                    <input id="unboundedNumOptionsInput" type="number" step="1" min="2" value="2">
+                </div>
+            </div>
+            <div class="config-actions-row">
+                <button class="primary" id="saveConfigButton" type="button">Save</button>
+                <button class="secondary" id="revertConfigButton" type="button">Revert</button>
+            </div>
+        </section>
+        <section class="status-bar">
+            <div class="status-card">
+                <div class="status-label">Connection</div>
+                <div class="status-value" id="connectionStatus">Browser local</div>
+            </div>
+            <div class="status-card">
+                <div class="status-label">Session</div>
+                <div class="status-value" id="sessionStatus">No active session</div>
+            </div>
+            <div class="status-card">
+                <div class="status-label">Question Count</div>
+                <div class="status-value" id="queryCountStatus">0</div>
+            </div>
+            <div class="status-card">
+                <div class="status-label">Search Phase</div>
+                <div class="status-value" id="phaseStatus">Not started</div>
+            </div>
+        </section>
+        <section class="workspace">
+            <div class="prompt-card">
+                <div class="scenario-header">
+                    <div class="scenario-header-top">
+                        <div class="section-kicker">Current Scenario</div>
+                        <div class="history-actions hidden" id="historyActions">
+                            <button class="secondary" id="replayButton" type="button">Replay</button>
+                            <a class="history-link nav-link" id="historyLink" href="#" target="_blank"
+                                rel="noopener noreferrer">Show Raw History</a>
+                        </div>
+                    </div>
+                    <div class="estimate-bar-group" id="estimateBarGroup">
+                        <div class="estimate-copy">
+                            <span class="estimate-summary hidden" id="estimateSummary">Estimated progress will appear
+                                here once a session starts.</span>
+                            <strong class="estimate-counter hidden" id="estimateCounter">0 / 0</strong>
+                        </div>
+                        <div class="estimate-track">
+                            <div class="estimate-fill" id="estimateFill"></div>
+                        </div>
+                    </div>
+                    <div class="replay-panel" id="replayPanel">
+                        <div class="replay-slider-row">
+                            <div class="replay-meta">
+                                <span id="replayStepLabel">Replay step</span>
+                                <span id="replaySelectionLabel">Selected option</span>
+                            </div>
+                            <input id="replaySlider" type="range" min="1" max="1" step="1" value="1">
+                        </div>
+                    </div>
+                </div>
+                <pre id="promptText">Choose a scenario and start a session to receive the first comparison.</pre>
+            </div>
+            <div class="note-card hidden" id="noteCard">
+                <div class="panel-title">Session Notes</div>
+                <p class="message" id="messageText">Session notes appear when a session finishes.</p>
+            </div>
+            <div>
+                <div class="panel-title">Options</div>
+                <div class="options-grid" id="optionsGrid"></div>
+            </div>
+            <div class="search-card visible" id="searchCard">
+                <div class="panel-title">Search State</div>
+                <div class="search-plot-wrap">
+                    <div class="search-plot" id="searchPlot"></div>
+                    <div class="search-meta-row">
+                        <div class="search-meta-chip"><span>Lower bound</span><strong id="lowerBoundValue">N/A</strong>
+                        </div>
+                        <div class="search-meta-chip"><span id="cutLabel">Cut target</span><strong
+                                id="cutValue">N/A</strong></div>
+                        <div class="search-meta-chip"><span>Upper bound</span><strong id="upperBoundValue">N/A</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="result-card" id="resultCard">
+                <div class="panel-title">Completed Session</div>
+                <div class="result-grid">
+                    <div class="result-stat">Lower bound<strong id="resultLower">N/A</strong></div>
+                    <div class="result-stat">Best estimate<strong id="resultMiddle">N/A</strong></div>
+                    <div class="result-stat">Upper bound<strong id="resultUpper">N/A</strong></div>
+                    <div class="result-stat">Questions answered<strong id="resultQueries">N/A</strong></div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
+
 </html>
