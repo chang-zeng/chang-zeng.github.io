@@ -14,8 +14,8 @@ share: false
 
 This page contains the Terms of Service and Privacy Policy for the Discord bot and related services operated by Chang Zeng (collectively, the **“Agent”**). By installing, accessing, or using the Agent, you agree to the Terms below and acknowledge the Privacy Policy.
 
-- [Terms of Service](#terms-of-service)
-- [Privacy Policy](#privacy-policy)
+- [Terms of Service]({{ '/app/discord-agent/terms/' | relative_url }})
+- [Privacy Policy]({{ '/app/discord-agent/privacy/' | relative_url }})
 - [Contact](#contact)
 
 <a id="terms-of-service"></a>
