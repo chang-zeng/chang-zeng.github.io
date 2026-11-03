@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agentic Research</title>
+    <link rel="canonical" href="https://chang-zeng.github.io/app/agentic-research/">
+    <meta name="description"
+        content="Agentic Research connects the AI coding agents you run to your own Gmail, Google Drive, Docs, Sheets, Slides, and Calendar.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main id="main-content">
+        <header>
+            <h1>Agentic Research</h1>
+            <p>Research tooling that lets your own AI coding agents work with your Google account.</p>
+            <nav aria-label="App navigation">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="mailto:changzeng@umass.edu">Contact</a>
+            </nav>
+        </header>
+
+        <p>
+            Agentic Research is a research toolkit for running AI coding agents (Claude Code and
+            OpenAI Codex) on a personal computer or a university computing cluster. It installs small
+            connector programs, called MCP servers, that run on your own machine. Through them, an
+            agent you started can read your email and work with your Google files when you ask it to.
+        </p>
+
+        <h2>What It Does</h2>
+        <ul>
+            <li><strong>Gmail (read-only):</strong> searches and reads your messages, threads, labels,
+                and attachments, and can check periodically for new mail. It cannot send, change, or
+                delete email.</li>
+            <li><strong>Google Drive, Docs, Sheets, and Slides:</strong> finds, reads, creates, and
+                edits files on your instruction, for example drafting a document or updating a
+                spreadsheet of results. The default permissions also allow moving, sharing, and
+                deleting files.</li>
+            <li><strong>Google Calendar:</strong> reads your calendars and events and creates, updates, or deletes
+                events on your instruction.</li>
+        </ul>
+
+        <h2>How It Handles Your Data</h2>
+        <p>
+            You authorize each Google connector before using it. Its sign-in tokens are stored on
+            the computer or cluster account where you run the toolkit. The local connectors call
+            Google's APIs directly; there is no developer-operated Agentic Research backend that
+            receives those tokens or Google data. Content retrieved for your agent may be sent to
+            your chosen AI provider to carry out your request. The optional Gmail checker runs
+            independently and keeps a local snapshot and latest summary of matching mail.
+            See the <a href="privacy.html">Privacy Policy</a> for permissions, storage, sharing,
+            and deletion details.
+        </p>
+
+        <h2>Stop Access</h2>
+        <p>
+            Remove access at any time from your
+            <a href="https://myaccount.google.com/connections">Google Account connections page</a>,
+            stop any running Gmail checker, and delete the saved connector credentials. The default
+            location is <code>.research/mcp/</code>; installations with configured shared state can
+            store them elsewhere. See the <a href="privacy.html#retention-and-deletion">deletion
+                instructions</a>.
+        </p>
+
+        <footer>
+            Agentic Research is developed by <a href="../../">Chang Zeng</a>.
+            Questions: <a href="mailto:changzeng@umass.edu">changzeng@umass.edu</a>.
+        </footer>
+    </main>
+</body>
+
+</html>

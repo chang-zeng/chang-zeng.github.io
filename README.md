@@ -1,3 +1,53 @@
+# Chang Zeng's GitHub Pages site
+
+The academic homepage is in `_pages/about.md`. Agentic Research has separate static
+information pages in `app/agentic-research/`; `tmp/` contains the original drafts and
+is excluded from the Jekyll build. The Discord Agent policies remain separate.
+
+## Agentic Research and Google OAuth branding
+
+After the changes are deployed through this repository's GitHub Pages publishing setup,
+use the following values in Google Auth Platform > Branding:
+
+| Field | Value |
+| --- | --- |
+| App name | Agentic Research |
+| User support email | changzeng@umass.edu |
+| Application home page | https://chang-zeng.github.io/app/agentic-research/ |
+| Privacy policy | https://chang-zeng.github.io/app/agentic-research/privacy.html |
+| Authorized domain | chang-zeng.github.io |
+| Developer contact email | changzeng@umass.edu |
+
+The app name must match the OAuth consent screen. The optional Terms of Service field
+can remain blank; the existing Discord Agent terms describe a different service.
+The draft's source-code link was omitted because the linked repository was private
+when these pages were prepared. Do not describe it as publicly open source until a
+public repository and license are available.
+
+For ownership verification, add a URL-prefix property for
+`https://chang-zeng.github.io/` in Google Search Console. The existing
+`google_site_verification` setting in `_config.yml` is available for the HTML-tag
+verification value on the academic homepage. Alternatively, place Google's exact
+verification HTML file at the repository root. No verification token is included in
+this change. Verify ownership with an account associated with the OAuth Cloud project.
+
+Check both public URLs before submitting them. Save Branding, then use Audience to
+change the app from Testing to In production when Google permits it. Reauthorize
+the local connectors afterward. Production removes the special seven-day Testing
+refresh-token limit; tokens can still expire or be revoked for other reasons.
+Brand verification and sensitive/restricted-scope verification are separate processes;
+these website files do not complete them or change your Cloud project's settings.
+
+References: [Google brand verification](https://developers.google.com/identity/protocols/oauth2/production-readiness/brand-verification),
+[refresh-token expiration](https://developers.google.com/identity/protocols/oauth2#expiration),
+and [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy).
+
+The privacy policy covers the local Gmail and Workspace connectors from the draft.
+Keep it synchronized with their actual scopes, storage, and provider data flows.
+Other optional or hosted integrations need disclosures reflecting their own behavior.
+
+---
+
 A Github Pages template for academic websites. This was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
 
 I think I've got things running smoothly and fixed some major bugs, but feel free to file issues or make pull requests if you want to improve the generic template / theme.
