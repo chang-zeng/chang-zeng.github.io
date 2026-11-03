@@ -27,11 +27,17 @@ when these pages were prepared. Do not describe it as publicly open source until
 public repository and license are available.
 
 For ownership verification, add a URL-prefix property for
-`https://chang-zeng.github.io/` in Google Search Console. The existing
-`google_site_verification` setting in `_config.yml` is available for the HTML-tag
-verification value on the academic homepage. Alternatively, place Google's exact
-verification HTML file at the repository root. No verification token is included in
-this change. Verify ownership with an account associated with the OAuth Cloud project.
+`https://chang-zeng.github.io/` in Google Search Console. The supplied verification
+file, `google86723bb5ec97eb69.html`, is at the repository root. After deployment,
+confirm it is accessible at
+`https://chang-zeng.github.io/google86723bb5ec97eb69.html`, then click Verify in
+Search Console. Keep this file in place after verification; Google periodically
+checks it. The original copy in `tmp/` is excluded from the published site.
+Verify ownership with an account associated with the OAuth Cloud project.
+
+As an alternative to file verification, the existing `google_site_verification`
+setting in `_config.yml` supports an HTML-tag verification value on the academic
+homepage. An HTML-file token is not the value for that setting.
 
 Check all three public URLs before submitting them. Save Branding, then use Audience to
 change the app from Testing to In production when Google permits it. Reauthorize
