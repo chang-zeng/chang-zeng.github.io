@@ -15,11 +15,13 @@ use the following values in Google Auth Platform > Branding:
 | User support email | changzeng@umass.edu |
 | Application home page | https://chang-zeng.github.io/app/agentic-research/ |
 | Privacy policy | https://chang-zeng.github.io/app/agentic-research/privacy.html |
+| Terms of service | https://chang-zeng.github.io/app/agentic-research/terms.html |
 | Authorized domain | chang-zeng.github.io |
 | Developer contact email | changzeng@umass.edu |
 
-The app name must match the OAuth consent screen. The optional Terms of Service field
-can remain blank; the existing Discord Agent terms describe a different service.
+The app name must match the OAuth consent screen. Google's brand-verification guidance
+describes Terms of Service as optional; use the Agentic Research URL above for that field.
+The existing Discord Agent terms describe a different service.
 The draft's source-code link was omitted because the linked repository was private
 when these pages were prepared. Do not describe it as publicly open source until a
 public repository and license are available.
@@ -31,7 +33,7 @@ verification value on the academic homepage. Alternatively, place Google's exact
 verification HTML file at the repository root. No verification token is included in
 this change. Verify ownership with an account associated with the OAuth Cloud project.
 
-Check both public URLs before submitting them. Save Branding, then use Audience to
+Check all three public URLs before submitting them. Save Branding, then use Audience to
 change the app from Testing to In production when Google permits it. Reauthorize
 the local connectors afterward. Production removes the special seven-day Testing
 refresh-token limit; tokens can still expire or be revoked for other reasons.
